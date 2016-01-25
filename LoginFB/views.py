@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.http import HttpResponse
 from allauth.socialaccount.models import SocialAccount
 from allauth.socialaccount.models import SocialApp
 from .models import UserProfile
@@ -7,6 +7,9 @@ import utils
 
 
 def deauthorize(request):
+    """
+    Sets the 'is_active' field for user in user_profile table to false.
+    """
     if request.method == 'POST':
         authResponse = request.POST.get('authResponse', '')
         signed_request = authResponse['signedRequest']
@@ -18,3 +21,4 @@ def deauthorize(request):
         # set is_active = false in UserProfile
         userProfile = UserProfile.objects.filter(user_id=userAccount.user_id)[0]
         userProfile.deauthorize()
+        return HttpResponse('')

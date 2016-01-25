@@ -33,5 +33,6 @@ class UserProfile(models.Model):
         
     def deauthorize(self):
         self.is_active = False
+        self.save()
 
 User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])

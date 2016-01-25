@@ -70,3 +70,14 @@ a {
     margin: 6px;
     font-size: 18px;
 }
+
+ul.errorlist {
+    margin: 0;
+    padding: 0;
+}
+
+ul.errorlist li {
+    display: inline;
+    color: red;
+    font-size: 12px;
+}
