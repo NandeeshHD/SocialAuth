@@ -2,6 +2,7 @@
 Social authentication using Facebook login
 
 Installation of required packages:
+
 pip install django==1.6
 pip install django-allauth==0.24.1
 
