@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.translation import ugettext_lazy as _
 from allauth.socialaccount.models import SocialAccount
 
 import hashlib
@@ -7,7 +8,9 @@ import hashlib
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='profile')
-    about_me = models.TextField(null=True, blank=True)
+    is_active = models.BooleanField(_('verified'), default=True,
+                help_text=_('Designates whether this user should be treated as '
+                            'active.'))
 
     def __unicode__(self):
         return "{}'s profile".format(self.user.username)
@@ -27,5 +30,8 @@ class UserProfile(models.Model):
 
         return "http://www.gravatar.com/avatar/{}?s=120".format(
             hashlib.md5(self.user.email).hexdigest())
+        
+    def deauthorize(self):
+        self.is_active = False
 
 User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
