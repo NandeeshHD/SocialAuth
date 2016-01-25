@@ -1,0 +1,24 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load account %}
+{% load url from future %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+    {% include "socialaccount/snippets/login_extra.html" %}
+    <div class="inset">
+        <div class="header">Sign In Directly With Facebook</div>
+		    <a href="/accounts/facebook/login/">
+		    	<div class="fb">
+		    		<img src="/static/img/fb_200.png"> 
+		    	</div>
+		    </a>
+
+        <div class="footnote">
+            Please sign in to continue!
+        </div>
+    </div>
+{% endblock %}
+

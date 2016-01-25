@@ -1,0 +1,72 @@
+body {
+    background-color: #e5e5ff;
+}
+
+a {
+    text-decoration: none;
+}
+
+.login_body {
+    background: url('/static/img/bodensee.jpg') no-repeat center top;
+    background-size: 100%;
+    color: #4d4d4d;
+    font-family: 'Arial',serif;
+    font-size:  14px;
+}
+
+.inset {
+    width: 200px;
+    padding: 30px;
+    background: rgba(255,255,255,.65);
+    box-shadow: 2px 2px 8px rgba(0,0,0,.7);
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 120px;
+    text-align: center;
+}
+
+.inset .header {
+    margin-bottom: 10px;
+}
+
+.footnote {
+    position: relative;
+    top: 14px;
+    margin-top: 6px;
+    font-size: 10px;
+}
+
+.fb {
+    box-shadow: 2px 2px 8px rgba(0,0,0,.7);
+    border-radius: 5px;
+    width: 198px;
+    height: 37px;
+    margin: 80px auto;
+    overflow: hidden;
+}
+
+.btn {
+    color: #fff;
+    font-size: 13px;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+    background-color: red;
+    background-repeat: repeat-x;
+    border-color: #5f8657;
+    border-color: rgba(0,0,0,0.1) rgba(0,0,0,0.1) rgba(0,0,0,0.25);
+    border-width: 2px;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 3px 18px 5px 18px;
+}
+
+.btn:hover,
+.btn.active {
+    box-shadow: 1px 1px 9px rgba(0,0,0,.7);
+}
+
+.username {
+    position: relative;
+    margin: 6px;
+    font-size: 18px;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if request.user.is_authenticated %}Logged In{% else %}Not Logged In{% endif %}</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+</head>
+<body class="login_body">
+
+	<div class="inset">
+	
+		{% if request.user.is_authenticated %}
+		    
+		    <img src="{{ request.user.profile.profile_image_url }}"/>
+		    <div class="username">
+			    {% if request.user.first_name or request.user.last_name %}
+			        {{ request.user.first_name }} {{ request.user.last_name }}
+			    {% else %}
+			        {{ request.user.username }}
+			    {% endif %}
+		    </div>
+		    <div>
+				<a href="/accounts/logout/" class="btn">Logout</a>	
+			</div>	
+		{% else %}
+			<div>
+		    	<a href="/accounts/login/" class="btn" style="background-color: #668C5E;">Login</a>
+			</div>
+		{% endif %}
+		
+	</div>
+	
+</body>
+</html>

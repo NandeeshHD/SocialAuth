@@ -36,6 +36,18 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    
+    # Login with Facebook feature
+    'LoginFB',
+    # The Django sites framework is required
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # ... include the providers you want to enable:
+    'allauth.socialaccount.providers.facebook',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -57,9 +69,13 @@ WSGI_APPLICATION = 'SocialAuth.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'socialauthdb',
+        'USER': 'SocialAuthUser',
+        'PASSWORD': 'SocialAuthUser',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        }
 }
 
 # Internationalization
@@ -80,3 +96,24 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+SITE_ID = 1
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    # Required by `allauth` template tags
+    'django.core.context_processors.request',
+)
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+# auth and allauth settings
+LOGIN_REDIRECT_URL = '/accounts/home'
+ACCOUNT_EMAIL_VERIFICATION = 'none' 
+SOCIALACCOUNT_QUERY_EMAIL = True
